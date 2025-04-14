@@ -48,12 +48,12 @@ const HowItWorks = () => {
                 className="w-full h-full object-cover opacity-80"
               />
               
-              {/* Play Button - Update with 3D styling */}
+              {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button3D
                   variant="primary"
                   size="icon"
-                  className="w-20 h-20 rounded-full"
+                  className="btn-gradient w-20 h-20 rounded-full"
                   onClick={() => setIsVideoPlaying(true)}
                   icon={
                     <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ const HowItWorks = () => {
           <Button3D
             variant="accent"
             size="lg"
-            className="mx-auto"
+            className="btn-gradient mx-auto"
             onClick={() => setIsVideoPlaying(true)}
             icon={
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@ const HowItWorks = () => {
               </svg>
             }
           >
-            Start Playground
+            Watch Demo
           </Button3D>
         </div>
       </div>

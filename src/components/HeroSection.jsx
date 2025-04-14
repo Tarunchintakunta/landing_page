@@ -1,7 +1,6 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import Button3D from './Button3D'; // Import the button component
 
 const HeroSection = () => {
   return (
@@ -25,7 +24,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative max-w-lg w-full">
-                <Button3D variant="primary">Start Playground</Button3D>
+                <button className="btn-gradient">Start Playground</button>
               </div>
             </div>
           </motion.div>
