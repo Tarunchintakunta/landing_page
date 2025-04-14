@@ -1,6 +1,7 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import Button3D from './Button3D'; // Import the button component
 
 const HeroSection = () => {
   return (
@@ -24,14 +25,8 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="relative max-w-lg w-full">
-                <input
-                  type="email"
-                  placeholder="Enter your work email"
-                  className="w-full px-6 py-4 text-lg rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
-                />
-                <button className="mt-3 sm:mt-0 sm:absolute sm:right-1 sm:top-1 sm:bottom-1 bg-primary text-white font-medium px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all">
-                  Get Started
-                </button>
+                  <Button3D variant="primary">Start Playground</Button3D>
+
               </div>
             </div>
           </motion.div>
