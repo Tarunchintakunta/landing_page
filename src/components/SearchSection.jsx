@@ -139,7 +139,12 @@ const SearchSection = () => {
                 higher-value work, and empower executives to answer their own
                 questions.
               </p>
-              <Button3D variant="primary">Get Started</Button3D>
+              <Button3D 
+                variant="primary" 
+                className="btn-3d-gradient text-white"
+              >
+                Get Started
+              </Button3D>
             </div>
           </motion.div>
         </div>
