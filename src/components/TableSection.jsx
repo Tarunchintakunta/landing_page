@@ -180,4 +180,4 @@ function getRandomColor(seed) {
   return colors[seed % colors.length];
 }
 
-export default TableSection;
+export default TableSection;  
