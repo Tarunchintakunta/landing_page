@@ -44,10 +44,10 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-6 mx-8">
-          <a href="#about" className="text-tertiary hover:text-primary transition-colors">About</a>
-          <a href="#resources" className="text-tertiary hover:text-primary transition-colors">Resources</a>
+          <a href="#about" className="text-tertiary hover:text-primary transition-colors">Product</a>
+          <a href="#resources" className="text-tertiary hover:text-primary transition-colors">Solutions</a>
           {/* <a href="#pricing" className="text-tertiary hover:text-primary transition-colors">Pricing</a> */}
-          <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Careers</a>
+          <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Research</a>
         </div>
         
         <button className="relative px-5 py-2 text-[14px] font-semibold text-white rounded-full bg-gradient-to-r from-blue-600 to-blue-800 transform hover:-translate-y-0.5 active:translate-y-0.5 transition-all duration-200 shadow-[0_4px_0_rgb(30,64,175)] hover:shadow-[0_5px_0_rgb(30,64,175)] active:shadow-[0_2px_0_rgb(30,64,175)]">
