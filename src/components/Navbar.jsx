@@ -51,15 +51,9 @@ const Navbar = () => {
           <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Careers</a>
         </div>
         
-        {/* Custom gradient button with 3D effect */}
-        <button 
-          className="relative overflow-hidden px-6 py-2 rounded-full font-medium text-white shadow-md hover:shadow-lg transform transition-all duration-200 active:shadow-inner active:translate-y-0.5"
-          style={{
-            background: 'linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%)',
-          }}
-        >
-          <span className="relative z-10">Get Started</span>
-          <div 
+        <button className="btn-gradient">
+          Get Started
+          <div
             className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-200"
             style={{ 
               mixBlendMode: 'overlay'
