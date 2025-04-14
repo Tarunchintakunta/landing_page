@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Button3D from './Button3D'; // Import the button component
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -50,8 +51,20 @@ const Navbar = () => {
           <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Careers</a>
         </div>
         
-        <button className="bg-secondary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all">
-          Get Started
+        {/* Custom gradient button with 3D effect */}
+        <button 
+          className="relative overflow-hidden px-6 py-2 rounded-full font-medium text-white shadow-md hover:shadow-lg transform transition-all duration-200 active:shadow-inner active:translate-y-0.5"
+          style={{
+            background: 'linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%)',
+          }}
+        >
+          <span className="relative z-10">Get Started</span>
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-200"
+            style={{ 
+              mixBlendMode: 'overlay'
+            }}
+          ></div>
         </button>
       </motion.nav>
     </header>
