@@ -1,6 +1,7 @@
 // src/components/ComparisonSection.jsx
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Button3D from './Button3D'; // Import the new button component
 
 const ComparisonSection = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -69,29 +70,33 @@ const ComparisonSection = () => {
         </motion.div>
 
         <div className="relative" ref={cardsContainerRef}>
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Updated with 3D style */}
           <div className="absolute top-1/2 left-4 -translate-y-1/2 z-10">
-            <button
-              onClick={handlePrevCard}
-              className="bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all"
+            <Button3D 
+              variant="secondary" 
+              size="icon" 
+              onClick={handlePrevCard} 
               disabled={currentCardIndex === 0}
-            >
-              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
+              icon={
+                <svg className="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              }
+            />
           </div>
           
           <div className="absolute top-1/2 right-4 -translate-y-1/2 z-10">
-            <button
-              onClick={handleNextCard}
-              className="bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all"
+            <Button3D 
+              variant="secondary" 
+              size="icon" 
+              onClick={handleNextCard} 
               disabled={currentCardIndex === comparisonCards.length - 1}
-            >
-              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
+              icon={
+                <svg className="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              }
+            />
           </div>
 
           {/* Cards Container */}
@@ -168,19 +173,25 @@ const ComparisonSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Pagination Dots */}
+          {/* Pagination Dots - Updated with 3D style */}
           <div className="flex justify-center mt-8 space-x-2">
             {comparisonCards.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  currentCardIndex === index 
-                    ? 'bg-primary' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
                 onClick={() => setCurrentCardIndex(index)}
                 aria-label={`Go to slide ${index + 1}`}
-              />
+              >
+                <div className={`w-10 h-10 flex items-center justify-center`}>
+                  <Button3D 
+                    variant="primary" 
+                    size="icon" 
+                    active={currentCardIndex === index}
+                    className="w-8 h-8"
+                  >
+                    {index + 1}
+                  </Button3D>
+                </div>
+              </button>
             ))}
           </div>
         </div>
