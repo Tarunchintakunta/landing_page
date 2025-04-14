@@ -7,6 +7,7 @@ import HowItWorks from './components/HowItWorks';
 import ComparisonSection from './components/ComparisonSection';
 import DelegateSection from './components/DelegateSection';
 import SearchSection from './components/SearchSection';
+import PresentationSection from './components/PresentationSection';
 import TableSection from './components/TableSection';
 import Footer from './components/Footer';
 
@@ -21,6 +22,7 @@ function App() {
         <ComparisonSection />
         <DelegateSection />
         <SearchSection />
+        <PresentationSection />
         <TableSection />
       </main>
       <Footer />

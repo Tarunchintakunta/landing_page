@@ -5,28 +5,27 @@ import Button3D from './Button3D'; // Import the button component
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 bg-light overflow-hidden">
+    <section className="pt-20 pb-16 bg-light overflow-hidden">
       <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content - Left Side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-xl text-primary mb-6">
+            <h1 className="heading-xl text-primary mb-4">
               Document processing
               <br /> reimagined with LLMs
             </h1>
-            <p className="body-text text-tertiary mb-8 max-w-xl">
+            <p className="body-text text-tertiary mb-6 max-w-lg">
               Turn your documents into high quality data, achieve unmatched
               accuracy, and ship custom document automation in days, not
               months.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative max-w-lg w-full">
-                  <Button3D variant="primary">Start Playground</Button3D>
-
+                <Button3D variant="primary">Start Playground</Button3D>
               </div>
             </div>
           </motion.div>
@@ -38,7 +37,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative h-[400px] w-full">
+            <div className="relative h-[300px] w-full">
               <motion.img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpo2DzhehcQoV78r_XgJ2nGaw4x3xJ9JCboQ&s"
                 alt="Document Processing Layers"
