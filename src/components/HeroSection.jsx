@@ -14,13 +14,11 @@ const HeroSection = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="mb-4 text-primary font-rooftop text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Document processing
-                <br /> reimagined with LLMs
+                Supercharge your investment
+                <br /> research with AI
               </h1>
               <p className="text-tertiary mb-6 max-w-lg font-rooftop text-lg md:text-xl">
-                Turn your documents into high quality data, achieve unmatched
-                accuracy, and ship custom document automation in days, not
-                months.
+              Financial research made simpler, better, and faster for the modern investor
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative max-w-lg w-full">

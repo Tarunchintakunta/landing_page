@@ -64,7 +64,7 @@ const ComparisonSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="heading-lg text-primary mb-4">
-            Extend enables technical teams to handle complex documents
+            Firmi enables technical teams to handle complex documents
             <br />with state-of-the-art accuracy and reliability.
           </h2>
         </motion.div>
