@@ -10,9 +10,8 @@
 /* Import Rooftop Regular font - you'll need to replace the URL with the actual font location */
 @font-face {
   font-family: 'Rooftop Regular';
-  src: url('./assets/fonts/RooftopRegular.woff2') format('woff2'),
-       url('./assets/fonts/RooftopRegular.woff') format('woff');
-  font-weight: 300;
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/rooftop/files/rooftop-regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }

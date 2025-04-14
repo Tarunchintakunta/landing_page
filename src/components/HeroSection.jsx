@@ -1,23 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Add CSS for Rooftop Regular font
-const fontFaceStyle = `
-  @font-face {
-    font-family: 'Rooftop Regular';
-    src: url('https://cdn.jsdelivr.net/npm/@fontsource/rooftop/files/rooftop-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-`;
-
 const HeroSection = () => {
   return (
     <>
-      {/* Add the font-face style */}
-      <style>{fontFaceStyle}</style>
-      
       <section className="pt-20 pb-16 bg-[#f9f7f6] overflow-hidden">
         <div className="section-container max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -27,18 +13,18 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="mb-4 text-primary" style={{ fontFamily: 'Rooftop Regular', fontSize: '2.5rem', lineHeight: '1.2' }}>
+              <h1 className="mb-4 text-primary font-rooftop text-4xl md:text-5xl lg:text-6xl leading-tight">
                 Document processing
                 <br /> reimagined with LLMs
               </h1>
-              <p className="body-text text-tertiary mb-6 max-w-lg" style={{ fontFamily: 'Rooftop Regular' }}>
+              <p className="text-tertiary mb-6 max-w-lg font-rooftop text-lg md:text-xl">
                 Turn your documents into high quality data, achieve unmatched
                 accuracy, and ship custom document automation in days, not
                 months.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative max-w-lg w-full">
-                  <button className="btn-gradient" style={{ fontFamily: 'Rooftop Regular' }}>Start Playground</button>
+                  <button className="btn-gradient">Start Playground</button>
                 </div>
               </div>
             </motion.div>
