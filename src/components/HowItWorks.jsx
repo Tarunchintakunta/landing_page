@@ -1,6 +1,7 @@
 // src/components/HowItWorks.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Button3D from './Button3D'; // Import the Button3D component
 
 const HowItWorks = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -47,17 +48,20 @@ const HowItWorks = () => {
                 className="w-full h-full object-cover opacity-80"
               />
               
-              {/* Play Button */}
-              <button 
-                className="absolute inset-0 flex items-center justify-center"
-                onClick={() => setIsVideoPlaying(true)}
-              >
-                <div className="flex items-center justify-center w-20 h-20 bg-primary bg-opacity-90 rounded-full hover:bg-opacity-100 transition-all transform hover:scale-105">
-                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </div>
-              </button>
+              {/* Play Button - Update with 3D styling */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Button3D
+                  variant="primary"
+                  size="icon"
+                  className="w-20 h-20 rounded-full"
+                  onClick={() => setIsVideoPlaying(true)}
+                  icon={
+                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                  }
+                />
+              </div>
             </div>
           ) : (
             // Actual Video Player (replace with your actual video URL)
@@ -76,16 +80,21 @@ const HowItWorks = () => {
         </motion.div>
 
         <div className="mt-8 text-center">
-          <button 
-            className="btn-primary flex items-center space-x-2 mx-auto"
+          {/* Update Call-to-Action button with 3D styling */}
+          <Button3D
+            variant="accent"
+            size="lg"
+            className="mx-auto"
             onClick={() => setIsVideoPlaying(true)}
+            icon={
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            }
           >
-            <span>Watch Full Demo</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </button>
+            Start Playground
+          </Button3D>
         </div>
       </div>
     </section>
