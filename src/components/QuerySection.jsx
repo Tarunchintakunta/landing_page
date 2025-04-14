@@ -44,6 +44,19 @@ const QuerySection = () => {
     <section className="py-20 bg-white">
       <div className="section-container">
         <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="heading-lg text-primary mb-4">Intelligent Query System</h2>
+          <p className="body-text text-tertiary max-w-2xl mx-auto">
+            Ask anything about company financials, market data, or business metrics
+          </p>
+        </motion.div>
+
+        <motion.div 
           className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +106,7 @@ const QuerySection = () => {
                 
                 <Button3D 
                   variant="accent" 
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 btn-green"
                   onClick={handleAsk}
                 >
                   <span>Ask</span>

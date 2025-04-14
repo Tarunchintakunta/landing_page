@@ -86,6 +86,37 @@ body {
   mask-composite: exclude;
 }
 
+/* Green button styles */
+.btn-green {
+  @apply relative px-4 py-2 text-sm font-medium text-white rounded-full transition-all duration-300;
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.btn-green:hover {
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
+}
+
+.btn-green:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.btn-green::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(0,0,0,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 /* Make the oval-shaped navbar */
 .oval-navbar {
   border-radius: 9999px;
