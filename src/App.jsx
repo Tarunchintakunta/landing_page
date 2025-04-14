@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection';
 import QuerySection from './components/QuerySection';
 import HowItWorks from './components/HowItWorks';
 import ComparisonSection from './components/ComparisonSection';
+import DelegateSection from './components/DelegateSection';
 import SearchSection from './components/SearchSection';
 import TableSection from './components/TableSection';
 import Footer from './components/Footer';
@@ -18,6 +19,7 @@ function App() {
         <QuerySection />
         <HowItWorks />
         <ComparisonSection />
+        <DelegateSection />
         <SearchSection />
         <TableSection />
       </main>
