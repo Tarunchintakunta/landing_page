@@ -1,6 +1,7 @@
 // src/components/PresentationSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import Button3D from './Button3D';
 
 const PresentationSection = () => {
   return (
@@ -22,12 +23,16 @@ const PresentationSection = () => {
             </p>
 
             <div className="mb-10">
-              <a href="#contact" className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-colors shadow-sm">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              <Button3D 
+                variant="primary" 
+                className="btn-3d-gradient inline-flex text-white items-center"
+                onClick={() => window.location.href = '#contact'}
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
                 <span>Contact sales for format customization</span>
-              </a>
+              </Button3D>
             </div>
 
             <h3 className="text-xl font-medium text-tertiary mb-5">
