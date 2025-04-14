@@ -8,7 +8,8 @@ import ComparisonSection from './components/ComparisonSection';
 import DelegateSection from './components/DelegateSection';
 import SearchSection from './components/SearchSection';
 import PresentationSection from './components/PresentationSection';
-import TableSection from './components/TableSection';
+import WorkspaceSection from './components/WorkspaceSection';
+// import TableSection from './components/TableSection';
 import Footer from './components/Footer';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <DelegateSection />
         <SearchSection />
         <PresentationSection />
-        <TableSection />
+        <WorkspaceSection />
       </main>
       <Footer />
     </div>

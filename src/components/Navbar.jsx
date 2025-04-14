@@ -23,9 +23,9 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
       <motion.nav 
-        className={`oval-navbar flex items-center justify-between backdrop-blur-sm ${
-          scrolled ? 'bg-white/80' : 'bg-white/60'
-        }`}
+        className={`oval-navbar flex items-center justify-between backdrop-blur-md bg-[#E8E4E0]/60 shadow-lg ${
+          scrolled ? 'backdrop-saturate-150' : 'backdrop-saturate-105'
+        } border border-white/20`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20 }}
