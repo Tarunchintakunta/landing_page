@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-color: #F4F0EC;
+}
+
 /* Import Rooftop Regular font - you'll need to replace the URL with the actual font location */
 @font-face {
   font-family: 'Rooftop Regular';
@@ -22,11 +26,11 @@ html, body {
 }
 
 body {
-  @apply bg-light text-tertiary antialiased;
+  background-color: var(--background-color);
+  @apply text-tertiary antialiased;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
 }
 
 /* Custom classes for reusable styles */
