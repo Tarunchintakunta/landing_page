@@ -5,59 +5,55 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
+  // Change navbar style on scroll
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
-      setScrolled(isScrolled);
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
-      <div className="container mx-auto px-4 pt-4">
-        <motion.nav 
-          className={`oval-navbar max-w-3xl mx-auto flex items-center justify-between ${
-            scrolled ? 'bg-opacity-95' : 'bg-opacity-90'
-          }`}
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            duration: 0.3
-          }}
-        >
-          <div className="flex items-center gap-2">
-            <img 
-              src="/src/assets/images/logo.svg" 
-              alt="Firmi Logo" 
-              className="h-6 w-6"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://via.placeholder.com/32?text=F';
-              }}
-            />
-            <span className="ml-2 logo-text">Firmi</span>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            <nav className="flex items-center gap-6">
-              <a href="#about" className="nav-link">About</a>
-              <a href="#resources" className="nav-link">Resources</a>
-              <a href="#pricing" className="nav-link">Pricing</a>
-              <a href="#careers" className="nav-link">Careers</a>
-            </nav>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <button className="btn-3d-gradient">Get Started</button>
-          </div>
-        </motion.nav>
-      </div>
+    <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
+      <motion.nav 
+        className={`oval-navbar flex items-center justify-between backdrop-blur-sm ${
+          scrolled ? 'bg-white/80' : 'bg-white/60'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+      >
+        <div className="flex items-center">
+          <img 
+            src="/src/assets/images/logo.svg" 
+            alt="Firmi Logo" 
+            className="h-8 w-auto"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = 'https://via.placeholder.com/40x40?text=Firmi';
+            }}
+          />
+          <span className="ml-2 text-primary font-rooftop text-xl">Firmi</span>
+        </div>
+        
+        <div className="hidden md:flex items-center space-x-6 mx-8">
+          <a href="#about" className="text-tertiary hover:text-primary transition-colors">About</a>
+          <a href="#resources" className="text-tertiary hover:text-primary transition-colors">Resources</a>
+          <a href="#pricing" className="text-tertiary hover:text-primary transition-colors">Pricing</a>
+          <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Careers</a>
+        </div>
+        
+        <button className="relative px-5 py-2 text-[14px] font-semibold text-white rounded-full bg-gradient-to-r from-blue-600 to-blue-800 transform hover:-translate-y-0.5 active:translate-y-0.5 transition-all duration-200 shadow-[0_4px_0_rgb(30,64,175)] hover:shadow-[0_5px_0_rgb(30,64,175)] active:shadow-[0_2px_0_rgb(30,64,175)]">
+          Get Started
+        </button>
+      </motion.nav>
     </header>
   );
 };
