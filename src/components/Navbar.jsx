@@ -3,21 +3,38 @@ import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
-  // Change navbar style on scroll
+  // Handle navbar visibility and style on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
+      const currentScrollY = window.scrollY;
+      
+      // Change appearance when scrolled
+      if (currentScrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
       }
+      
+      // Hide when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past threshold
+        setVisible(false);
+      } else {
+        // Scrolling up or at the top
+        setVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
     
-    document.addEventListener('scroll', handleScroll);
+    document.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, [lastScrollY]);
   
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
@@ -26,7 +43,7 @@ const Navbar = () => {
           scrolled ? 'shadow-lg backdrop-saturate-[1.8] bg-[#c5c3c2]/60' : 'shadow-md backdrop-saturate-[1.2] bg-[#c5c3c2]/40'
         } border-y border-white/20`}
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        animate={{ y: visible ? 0 : -100 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20 }}
       >
         <div className="flex items-center">
