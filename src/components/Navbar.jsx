@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
-  // Change navbar style on scroll
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -24,11 +23,16 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
       <motion.nav 
         className={`oval-navbar flex items-center justify-between ${
-          scrolled ? 'bg-white bg-opacity-90' : 'bg-white bg-opacity-70'
+          scrolled ? 'bg-opacity-95' : 'bg-opacity-80'
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 120, 
+          damping: 20,
+          opacity: { duration: 0.3 }
+        }}
       >
         <div className="flex items-center">
           <img 
@@ -40,17 +44,19 @@ const Navbar = () => {
               e.target.src = 'https://via.placeholder.com/40x40?text=Firmi';
             }}
           />
-          <span className="ml-2 text-primary font-rooftop text-xl">Firmi</span>
+          <span className="ml-2 logo-text">Firmi</span>
         </div>
         
-        <div className="hidden md:flex items-center space-x-6 mx-8">
-          <a href="#about" className="text-tertiary hover:text-primary transition-colors">About</a>
-          <a href="#resources" className="text-tertiary hover:text-primary transition-colors">Resources</a>
-          <a href="#pricing" className="text-tertiary hover:text-primary transition-colors">Pricing</a>
-          <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Careers</a>
+        <div className="hidden md:flex items-center space-x-8">
+          <a href="#about" className="nav-link">About</a>
+          <a href="#resources" className="nav-link">Resources</a>
+          <a href="#pricing" className="nav-link">Pricing</a>
+          <a href="#careers" className="nav-link">Careers</a>
         </div>
 
-        <button className="btn-gradient">Get Started</button>
+        <div className="flex items-center space-x-4">
+          <button className="btn-primary">Get Started</button>
+        </div>
       </motion.nav>
     </header>
   );
