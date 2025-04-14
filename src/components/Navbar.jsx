@@ -1,10 +1,9 @@
-// src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  
   // Change navbar style on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -13,13 +12,13 @@ const Navbar = () => {
         setScrolled(isScrolled);
       }
     };
-
+    
     document.addEventListener('scroll', handleScroll);
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
-
+  
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
       <motion.nav 
@@ -32,8 +31,8 @@ const Navbar = () => {
       >
         <div className="flex items-center">
           <img 
-            src="/src/assets/images/logo.svg" 
-            alt="Firmi Logo" 
+            src="/src/assets/images/logo.svg"
+            alt="Firmi Logo"
             className="h-8 w-auto"
             onError={(e) => {
               e.target.onerror = null;
@@ -50,7 +49,7 @@ const Navbar = () => {
           <a href="#careers" className="text-tertiary hover:text-primary transition-colors">Research</a>
         </div>
         
-        <button className="relative px-5 py-2 text-[14px] font-semibold text-white rounded-full bg-gradient-to-r from-blue-600 to-blue-800 transform hover:-translate-y-0.5 active:translate-y-0.5 transition-all duration-200 shadow-[0_4px_0_rgb(30,64,175)] hover:shadow-[0_5px_0_rgb(30,64,175)] active:shadow-[0_2px_0_rgb(30,64,175)]">
+        <button className="relative px-5 py-2 text-[14px] font-semibold text-white rounded-full bg-gradient-to-r from-blue-600 to-blue-800 hover:brightness-105 transition-all duration-200 shadow-md">
           Get Started
         </button>
       </motion.nav>
