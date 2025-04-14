@@ -106,7 +106,7 @@ const QuerySection = () => {
                 
                 <Button3D 
                   variant="accent" 
-                  className="flex items-center space-x-2 btn-green"
+                  className="flex items-center space-x-2 text-white btn-green"
                   onClick={handleAsk}
                 >
                   <span>Ask</span>
