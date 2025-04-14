@@ -16,27 +16,27 @@
 /* Custom classes for reusable styles */
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+    @apply max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-12;
   }
   
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-full font-medium transition-all hover:bg-opacity-90;
+    @apply bg-primary text-white px-4 py-2 rounded-full font-medium transition-all hover:bg-opacity-90 text-sm;
   }
   
   .btn-secondary {
-    @apply bg-light text-secondary px-6 py-3 rounded-full font-medium transition-all hover:bg-opacity-90;
+    @apply bg-light text-secondary px-4 py-2 rounded-full font-medium transition-all hover:bg-opacity-90 text-sm;
   }
   
   .heading-xl {
-    @apply text-4xl md:text-5xl lg:text-6xl font-rooftop font-light leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-rooftop font-light leading-tight;
   }
   
   .heading-lg {
-    @apply text-3xl md:text-4xl font-rooftop font-light leading-tight;
+    @apply text-2xl md:text-3xl font-rooftop font-light leading-tight;
   }
   
   .body-text {
-    @apply text-base md:text-lg font-sans font-normal;
+    @apply text-sm md:text-base font-sans font-normal;
   }
 }
 
