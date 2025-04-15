@@ -125,29 +125,128 @@ const ComparisonSection = () => {
   };
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="section-container max-w-6xl mx-auto px-4">
+    <section className="py-16 bg-white overflow-hidden">
+      <div className="section-container max-w-[1400px] mx-auto px-6">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-4xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="heading-lg text-primary mb-4">
+          <h2 className="text-4xl font-semibold text-primary mb-4">
             Firmi enables technical teams to handle complex documents
             <br />with state-of-the-art accuracy and reliability.
           </h2>
         </motion.div>
 
         <div className="relative" ref={cardsContainerRef}>
+          {/* Cards Container */}
+          <motion.div 
+            className="flex gap-8 justify-center items-stretch"
+            animate={{ 
+              x: isInView ? 0 : '100%',
+              opacity: isInView ? 1 : 0
+            }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* Without Card */}
+            <motion.div 
+              className="comparison-card w-[42%] bg-slate-700 rounded-xl p-5 shadow-xl flex flex-col"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <span className="bg-slate-600/80 text-white px-4 py-1.5 rounded-full text-sm font-medium">
+                    {comparisonCards[currentCardIndex].withoutTitle}
+                  </span>
+                </div>
+                <span className="bg-rose-400/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {comparisonCards[currentCardIndex].withoutTag}
+                </span>
+              </div>
+              
+              <h3 className="text-xl font-semibold text-white mb-4">
+                {comparisonCards[currentCardIndex].withoutSubtitle}
+              </h3>
+              
+              <div className="bg-slate-800/80 rounded-lg p-4 mb-4 flex-grow">
+                <div className="bg-slate-700/90 rounded-md p-2.5 mb-3 text-sm text-gray-300">
+                  {comparisonCards[currentCardIndex].withoutSearch}
+                </div>
+                
+                <div className="text-white text-sm mb-4 leading-relaxed">
+                  {comparisonCards[currentCardIndex].withoutResult}
+                </div>
+                
+                <div className="border-t border-slate-600/50 pt-3 text-gray-300 text-sm">
+                  {comparisonCards[currentCardIndex].withoutFeature}
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between text-sm mt-auto">
+                <span className="text-gray-400">{comparisonCards[currentCardIndex].withoutFooter}</span>
+                <span className="bg-slate-600/80 px-3 py-1.5 rounded-md text-white text-xs font-medium">
+                  {comparisonCards[currentCardIndex].withFooterLabel}
+                </span>
+              </div>
+            </motion.div>
+            
+            {/* With Card */}
+            <motion.div 
+              className="comparison-card w-[42%] bg-blue-700 rounded-xl p-5 shadow-xl flex flex-col"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <span className="bg-blue-600/80 text-white px-4 py-1.5 rounded-full text-sm font-medium">
+                    {comparisonCards[currentCardIndex].withTitle}
+                  </span>
+                </div>
+                <span className="bg-emerald-400/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {comparisonCards[currentCardIndex].withTag}
+                </span>
+              </div>
+              
+              <h3 className="text-xl font-semibold text-white mb-4">
+                {comparisonCards[currentCardIndex].withSubtitle}
+              </h3>
+              
+              <div className="bg-blue-800/80 rounded-lg p-4 mb-4 flex-grow">
+                <div className="bg-blue-700/90 rounded-md p-2.5 mb-3 text-sm text-gray-100">
+                  {comparisonCards[currentCardIndex].withSearch}
+                </div>
+                
+                <div className="text-white text-sm mb-4 leading-relaxed">
+                  {comparisonCards[currentCardIndex].withResult}
+                </div>
+                
+                <div className="border-t border-blue-600/50 pt-3 text-gray-100 text-sm">
+                  {comparisonCards[currentCardIndex].withFeature}
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between text-sm mt-auto">
+                <span className="text-gray-100">{comparisonCards[currentCardIndex].withFooter}</span>
+                <span className="bg-blue-600/80 px-3 py-1.5 rounded-md text-white text-xs font-medium">
+                  {comparisonCards[currentCardIndex].withFooterLabel}
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 left-2 -translate-y-1/2 z-10">
+          <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-10">
             <Button
               variant="icon"
               size="icon"
               rounded
               onClick={handlePrevCard}
+              className="bg-white/90 hover:bg-white shadow-lg"
               aria-label="Previous slide"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -156,12 +255,13 @@ const ComparisonSection = () => {
             </Button>
           </div>
           
-          <div className="absolute top-1/2 right-2 -translate-y-1/2 z-10">
+          <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-10">
             <Button
               variant="icon"
               size="icon"
               rounded
               onClick={handleNextCard}
+              className="bg-white/90 hover:bg-white shadow-lg"
               aria-label="Next slide"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -171,122 +271,18 @@ const ComparisonSection = () => {
           </div>
 
           {/* Dot Navigation */}
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {comparisonCards.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentCardIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentCardIndex === index ? 'bg-primary w-4' : 'bg-gray-300 hover:bg-gray-400'
+                  currentCardIndex === index ? 'bg-primary w-6' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
-
-          {/* Cards Container */}
-          <motion.div 
-            className="flex gap-4 justify-center flex-wrap md:flex-nowrap"
-            animate={{ 
-              x: isInView ? 0 : '100%',
-              opacity: isInView ? 1 : 0
-            }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Without Card */}
-            <motion.div 
-              className="comparison-card w-full md:w-1/2 max-w-sm mx-auto bg-slate-700 rounded-lg p-5 shadow-lg"
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <span className="bg-slate-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {comparisonCards[currentCardIndex].withoutTitle}
-                  </span>
-                </div>
-                <span className="bg-rose-400 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  {comparisonCards[currentCardIndex].withoutTag}
-                </span>
-              </div>
-              
-              <h3 className="text-2xl font-semibold text-white mb-5">
-                {comparisonCards[currentCardIndex].withoutSubtitle}
-              </h3>
-              
-              <div className="bg-slate-800 rounded-lg p-4 mb-4">
-                <div className="bg-slate-700 rounded-md p-2 mb-3 text-sm text-gray-300">
-                  {comparisonCards[currentCardIndex].withoutSearch}
-                </div>
-                
-                <div className="text-white mb-4">
-                  {comparisonCards[currentCardIndex].withoutResult}
-                </div>
-                
-                <div className="border-t border-slate-600 pt-3 text-gray-300 text-sm">
-                  {comparisonCards[currentCardIndex].withoutFeature}
-                </div>
-              </div>
-              
-              <div className="flex items-center mt-auto pt-2">
-                <div className="h-1 w-16 bg-gray-400 rounded mr-3"></div>
-                <span className="text-gray-300 uppercase text-sm font-medium">
-                  {comparisonCards[currentCardIndex].withFooterLabel}
-                </span>
-                <span className="ml-auto text-gray-300 text-sm">
-                  {comparisonCards[currentCardIndex].withoutFooter}
-                </span>
-              </div>
-            </motion.div>
-            
-            {/* With Card */}
-            <motion.div 
-              className="comparison-card w-full md:w-1/2 max-w-sm mx-auto bg-blue-700 rounded-lg p-5 shadow-lg"
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {comparisonCards[currentCardIndex].withTitle}
-                  </span>
-                </div>
-                <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  {comparisonCards[currentCardIndex].withTag}
-                </span>
-              </div>
-              
-              <h3 className="text-2xl font-semibold text-white mb-5">
-                {comparisonCards[currentCardIndex].withSubtitle}
-              </h3>
-              
-              <div className="bg-blue-800 rounded-lg p-4 mb-4">
-                <div className="bg-blue-700 rounded-md p-2 mb-3 text-sm text-blue-200">
-                  {comparisonCards[currentCardIndex].withSearch}
-                </div>
-                
-                <div className="text-white mb-4">
-                  {comparisonCards[currentCardIndex].withResult}
-                </div>
-                
-                <div className="border-t border-blue-600 pt-3 text-blue-200 text-sm">
-                  {comparisonCards[currentCardIndex].withFeature}
-                </div>
-              </div>
-              
-              <div className="flex items-center mt-auto pt-2">
-                <div className="h-1 w-16 bg-blue-400 rounded mr-3"></div>
-                <span className="text-blue-200 uppercase text-sm font-medium">
-                  {comparisonCards[currentCardIndex].withFooterLabel}
-                </span>
-                <span className="ml-auto text-blue-200 text-sm">
-                  {comparisonCards[currentCardIndex].withFooter}
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
     </section>
