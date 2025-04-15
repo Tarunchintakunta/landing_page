@@ -1,9 +1,51 @@
 // src/components/SearchSection.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import Button3D from './Button3D'; // Import the Button3D component
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Button3D from './Button3D';
 
 const SearchSection = () => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const items = [
+    {
+      title: "Models & spreadsheets",
+      subtitle: "#internal",
+      icon: (
+        <svg className="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+          <path d="M7 7h4v4H7zm6 0h4v4h-4zm-6 6h4v4H7zm6 0h4v4h-4z"/>
+        </svg>
+      )
+    },
+    {
+      title: "Data rooms, meeting notes",
+      subtitle: "#documents",
+      icon: (
+        <svg className="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+        </svg>
+      )
+    },
+    {
+      title: "Research reports, analysis",
+      subtitle: "#research",
+      icon: (
+        <svg className="w-6 h-6 text-purple-500" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+          <path d="M7 12h4v4H7zm0-4h4v2H7z"/>
+          <path d="M13 10h4v6h-4z"/>
+        </svg>
+      )
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % items.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-20 bg-light">
       <div className="section-container">
@@ -29,35 +71,29 @@ const SearchSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-rooftop text-tertiary">Models & spreadsheets</h3>
-              <Button3D 
-                variant="secondary" 
-                size="icon"
-                className="flex items-center justify-center"
-                icon={
-                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
-                  </svg>
-                }
-              />
-            </div>
-
-            <div className="flex items-center p-4 bg-light rounded-lg mb-4 hover:bg-primary hover:bg-opacity-5 cursor-pointer transition-all">
-              <div className="w-12 h-12 bg-pink-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-lg font-medium">Data rooms, meeting notes</h4>
-                <p className="text-sm text-gray-500">#Internal</p>
-              </div>
-              <div className="ml-auto">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
+            <div className="relative h-16 w-64 overflow-hidden bg-gray-50 rounded-lg mb-6">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={currentTextIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 p-4"
+                >
+                  <div className="flex items-center space-x-3">
+                    {items[currentTextIndex].icon}
+                    <div className="flex flex-col">
+                      <span className="text-base font-medium text-gray-900">
+                        {items[currentTextIndex].title}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        {items[currentTextIndex].subtitle}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             <h3 className="text-xl font-rooftop text-tertiary mt-8 mb-4">Filings and earnings</h3>
@@ -81,9 +117,9 @@ const SearchSection = () => {
                 variant="primary"
                 active={true}
                 size="icon"
-                className="aspect-square"
+                className="aspect-square w-12 h-12"
                 icon={
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                 }
@@ -91,9 +127,9 @@ const SearchSection = () => {
               <Button3D
                 variant="secondary"
                 size="icon"
-                className="aspect-square"
+                className="aspect-square w-12 h-12"
                 icon={
-                  <svg className="w-8 h-8 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                   </svg>
                 }
@@ -101,9 +137,9 @@ const SearchSection = () => {
               <Button3D
                 variant="secondary"
                 size="icon"
-                className="aspect-square"
+                className="aspect-square w-12 h-12"
                 icon={
-                  <svg className="w-8 h-8 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                   </svg>
                 }
@@ -111,9 +147,9 @@ const SearchSection = () => {
               <Button3D
                 variant="secondary"
                 size="icon"
-                className="aspect-square"
+                className="aspect-square w-12 h-12"
                 icon={
-                  <svg className="w-8 h-8 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
@@ -122,9 +158,9 @@ const SearchSection = () => {
               <Button3D
                 variant="secondary"
                 size="icon"
-                className="aspect-square"
+                className="aspect-square w-12 h-12"
                 icon={
-                  <svg className="w-8 h-8 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                   </svg>
                 }
