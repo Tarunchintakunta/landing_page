@@ -121,7 +121,7 @@ const ComparisonSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </div>
-                <h3 className="text-xl font-rooftop">Without Extend</h3>
+                <h3 className="text-xl font-rooftop">Without Firmi</h3>
               </div>
               
               <p className="text-tertiary mb-8">
@@ -153,7 +153,7 @@ const ComparisonSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <h3 className="text-xl font-rooftop text-white">With Extend</h3>
+                <h3 className="text-xl font-rooftop text-white">With Firmi</h3>
               </div>
               
               <p className="text-white text-opacity-90 mb-8">
