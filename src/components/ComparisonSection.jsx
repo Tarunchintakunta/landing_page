@@ -1,5 +1,5 @@
 // src/components/ComparisonSection.jsx
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const ComparisonSection = () => {
@@ -106,6 +106,15 @@ const ComparisonSection = () => {
     }
   ];
 
+  // Auto-change cards every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentCardIndex((prevIndex) => (prevIndex + 1) % comparisonCards.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const handleNextCard = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex + 1) % comparisonCards.length);
   };
@@ -132,33 +141,45 @@ const ComparisonSection = () => {
 
         <div className="relative" ref={cardsContainerRef}>
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 left-4 -translate-y-1/2 z-10">
+          <div className="absolute top-1/2 left-2 -translate-y-1/2 z-10">
             <button 
-              className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
+              className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
               onClick={handlePrevCard} 
-              disabled={currentCardIndex === 0}
             >
-              <svg className="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
               </svg>
             </button>
           </div>
           
-          <div className="absolute top-1/2 right-4 -translate-y-1/2 z-10">
+          <div className="absolute top-1/2 right-2 -translate-y-1/2 z-10">
             <button 
-              className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
+              className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
               onClick={handleNextCard} 
-              disabled={currentCardIndex === comparisonCards.length - 1}
             >
-              <svg className="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </button>
           </div>
 
+          {/* Dot Navigation */}
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {comparisonCards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentCardIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentCardIndex === index ? 'bg-primary w-4' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
           {/* Cards Container */}
           <motion.div 
-            className="flex gap-6 justify-center flex-wrap md:flex-nowrap"
+            className="flex gap-4 justify-center flex-wrap md:flex-nowrap"
             animate={{ 
               x: isInView ? 0 : '100%',
               opacity: isInView ? 1 : 0
@@ -167,7 +188,7 @@ const ComparisonSection = () => {
           >
             {/* Without Card */}
             <motion.div 
-              className="comparison-card w-full md:w-1/2 max-w-md mx-auto bg-slate-700 rounded-lg p-6 shadow-lg"
+              className="comparison-card w-full md:w-1/2 max-w-sm mx-auto bg-slate-700 rounded-lg p-5 shadow-lg"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -214,7 +235,7 @@ const ComparisonSection = () => {
             
             {/* With Card */}
             <motion.div 
-              className="comparison-card w-full md:w-1/2 max-w-md mx-auto bg-blue-700 rounded-lg p-6 shadow-lg"
+              className="comparison-card w-full md:w-1/2 max-w-sm mx-auto bg-blue-700 rounded-lg p-5 shadow-lg"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -259,24 +280,6 @@ const ComparisonSection = () => {
               </div>
             </motion.div>
           </motion.div>
-          
-          {/* Pagination Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {comparisonCards.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentCardIndex(index)}
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  currentCardIndex === index 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                } transition-colors`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </section>
