@@ -70,7 +70,7 @@ const HowItWorks = () => {
               </svg>
             }
           >
-            Watch Demo
+            Start Playground
           </Button3D>
         </div>
       </div>
