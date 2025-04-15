@@ -37,7 +37,7 @@ const HeroSection = () => {
               <div className="relative h-[400px] w-full">
                 <div className="w-full h-full transform scale-110 hover:scale-115 transition-transform duration-500">
                   <video 
-                    src="/public/FAsSZz-hQz7z9QpE.mp4"
+                    src="/FAsSZz-hQz7z9QpE.mp4"
                     className="w-full h-full object-contain rounded-lg shadow-2xl"
                     autoPlay
                     loop

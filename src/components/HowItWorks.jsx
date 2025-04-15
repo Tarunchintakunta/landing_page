@@ -40,7 +40,7 @@ const HowItWorks = () => {
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
             <video
               className="w-full h-full object-cover"
-              src="/public/Firmi floww.mp4"
+              src="/Firmi floww.mp4"
               autoPlay
               loop
               muted
@@ -51,7 +51,7 @@ const HowItWorks = () => {
               }}
               style={{ filter: 'brightness(1.05) contrast(1.05)' }}
             >
-              <source src="/public/Firmi floww.mp4" type="video/mp4" />
+              <source src="/Firmi floww.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
