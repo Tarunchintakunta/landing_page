@@ -125,7 +125,7 @@ const ComparisonSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-20 bg-white">
       <div className="section-container max-w-[1400px] mx-auto px-6">
         <motion.div
           className="text-center max-w-4xl mx-auto mb-12"

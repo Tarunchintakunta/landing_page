@@ -47,7 +47,7 @@ const SearchSection = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-light">
+    <section className="py-20 bg-gray-50">
       <div className="section-container">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-12"

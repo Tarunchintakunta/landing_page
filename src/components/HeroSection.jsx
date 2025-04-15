@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const HeroSection = () => {
   return (
     <>
-      <section className="pt-20 pb-16 bg-[#f9f7f6] overflow-hidden">
+      <section className="pt-20 pb-16 bg-gray-50 overflow-hidden">
         <div className="section-container max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Text Content - Left Side */}
