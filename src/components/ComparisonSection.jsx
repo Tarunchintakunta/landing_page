@@ -1,6 +1,7 @@
 // src/components/ComparisonSection.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Button from './common/Button';
 
 const ComparisonSection = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -142,25 +143,31 @@ const ComparisonSection = () => {
         <div className="relative" ref={cardsContainerRef}>
           {/* Navigation Buttons */}
           <div className="absolute top-1/2 left-2 -translate-y-1/2 z-10">
-            <button 
-              className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
-              onClick={handlePrevCard} 
+            <Button
+              variant="icon"
+              size="icon"
+              rounded
+              onClick={handlePrevCard}
+              aria-label="Previous slide"
             >
-              <svg className="w-4 h-4 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
               </svg>
-            </button>
+            </Button>
           </div>
           
           <div className="absolute top-1/2 right-2 -translate-y-1/2 z-10">
-            <button 
-              className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center shadow-md hover:bg-gray-300 transition-colors"
-              onClick={handleNextCard} 
+            <Button
+              variant="icon"
+              size="icon"
+              rounded
+              onClick={handleNextCard}
+              aria-label="Next slide"
             >
-              <svg className="w-4 h-4 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
               </svg>
-            </button>
+            </Button>
           </div>
 
           {/* Dot Navigation */}
@@ -170,7 +177,7 @@ const ComparisonSection = () => {
                 key={index}
                 onClick={() => setCurrentCardIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentCardIndex === index ? 'bg-primary w-4' : 'bg-gray-300'
+                  currentCardIndex === index ? 'bg-primary w-4' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

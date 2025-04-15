@@ -1,6 +1,7 @@
 // src/components/WorkspaceSection.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Button from './common/Button';
 
 const WorkspaceSection = () => {
   const [activeTab, setActiveTab] = useState('documents');
@@ -555,30 +556,38 @@ const WorkspaceSection = () => {
         >
           {/* Tabs */}
           <div className="flex border-b border-gray-200">
-            <button 
-              className={`px-6 py-4 text-sm font-medium ${activeTab === 'documents' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 hover:text-gray-700'}`}
+            <Button
+              variant={activeTab === 'documents' ? 'primary' : 'ghost'}
+              size="sm"
+              className={`${activeTab === 'documents' ? 'border-b-2 border-primary' : ''}`}
               onClick={() => setActiveTab('documents')}
             >
               Documents
-            </button>
-            <button 
-              className={`px-6 py-4 text-sm font-medium ${activeTab === 'tables' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 hover:text-gray-700'}`}
+            </Button>
+            <Button
+              variant={activeTab === 'tables' ? 'primary' : 'ghost'}
+              size="sm"
+              className={`${activeTab === 'tables' ? 'border-b-2 border-primary' : ''}`}
               onClick={() => setActiveTab('tables')}
             >
               Tables
-            </button>
-            <button 
-              className={`px-6 py-4 text-sm font-medium ${activeTab === 'charts' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 hover:text-gray-700'}`}
+            </Button>
+            <Button
+              variant={activeTab === 'charts' ? 'primary' : 'ghost'}
+              size="sm"
+              className={`${activeTab === 'charts' ? 'border-b-2 border-primary' : ''}`}
               onClick={() => setActiveTab('charts')}
             >
               Charts
-            </button>
-            <button 
-              className={`px-6 py-4 text-sm font-medium ${activeTab === 'slides' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 hover:text-gray-700'}`}
+            </Button>
+            <Button
+              variant={activeTab === 'slides' ? 'primary' : 'ghost'}
+              size="sm"
+              className={`${activeTab === 'slides' ? 'border-b-2 border-primary' : ''}`}
               onClick={() => setActiveTab('slides')}
             >
               Slides
-            </button>
+            </Button>
           </div>
 
           {/* Tab Content */}

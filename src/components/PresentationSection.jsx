@@ -22,7 +22,7 @@ const PresentationSection = () => {
               Accelerate time to value by formatting analyses into tailor-made deliverables.
             </p>
 
-            <div className="mb-10">
+            {/* <div className="mb-10">
               <Button3D 
                 variant="primary" 
                 className="btn-3d-gradient inline-flex text-white items-center"
@@ -33,7 +33,7 @@ const PresentationSection = () => {
                 </svg>
                 <span>Contact sales for format customization</span>
               </Button3D>
-            </div>
+            </div> */}
 
             <h3 className="text-xl font-medium text-tertiary mb-5">
               Firmi can generate

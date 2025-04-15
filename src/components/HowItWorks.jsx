@@ -1,7 +1,7 @@
 // src/components/HowItWorks.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Button3D from './Button3D'; // Import the Button3D component
+import Button from './common/Button';
 
 const HowItWorks = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -58,14 +58,13 @@ const HowItWorks = () => {
         </motion.div>
 
         <div className="mt-8 text-center">
-          {/* Update Call-to-Action button with 3D styling */}
-          <Button3D
-            variant="accent"
+          <Button
+            variant="3d"
             size="lg"
             className="btn-gradient mx-auto text-white"
           >
             Start Playground
-          </Button3D>
+          </Button>
         </div>
       </div>
     </section>
